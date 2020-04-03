@@ -1,7 +1,4 @@
 package com.kafka.procedur.consumer.model;
-
-import com.google.gson.Gson;
-
 public class Transaction {
 
     private String amount;
