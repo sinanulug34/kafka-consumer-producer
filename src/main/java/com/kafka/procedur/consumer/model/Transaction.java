@@ -3,6 +3,10 @@ public class Transaction {
 
     private String amount;
     private String transactionType;
+    public Transaction(String amount, String transactionType) {
+        this.amount = amount;
+        this.transactionType = transactionType;
+    }
 
     public String getAmount() {
         return amount;
@@ -22,7 +26,6 @@ public class Transaction {
 
     public Transaction() {
     }
-
     @Override
     public String toString() {
         return "Transaction{" +
@@ -30,8 +33,5 @@ public class Transaction {
                 ", transactionType='" + transactionType + '\'' +
                 '}';
     }
-    public Transaction(String amount, String transactionType) {
-        this.amount = amount;
-        this.transactionType = transactionType;
-    }
+
 }
