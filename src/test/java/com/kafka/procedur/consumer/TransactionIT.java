@@ -18,7 +18,6 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.test.rule.EmbeddedKafkaRule;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
-import org.testcontainers.containers.GenericContainer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,16 +70,6 @@ public class TransactionIT {
         //consume edilecek topic lerin partitions ı oluşana kadar bekliyoruz.
         ContainerTestUtils.waitForAssignment(container, embeddedKafka.getEmbeddedKafka().getPartitionsPerTopic());
 
-        @ClassRule
-        public static GenericContainer zookeeper = new GenericContainer("confluentinc/cp-zookeeper:4.0.0")
-                .withNetwork(network)
-                .withNetworkAliases("zookeeper")
-                .withEnv("ZOOKEEPER_CLIENT_PORT", "2181");
-
-        @ClassRule
-        public static KafkaContainer kafkaContainer = new KafkaContainer()
-                .withNetwork(network)
-                .withExternalZookeeper("zookeeper:2181");
 
     }
 
