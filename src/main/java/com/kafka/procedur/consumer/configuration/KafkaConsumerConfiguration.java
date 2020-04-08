@@ -34,6 +34,8 @@ public class KafkaConsumerConfiguration {
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "group-id");
+        //props.put(ConsumerConfig.GROUP_ID_CONFIG, "group-id2");
+        //props.put(ConsumerConfig.GROUP_ID_CONFIG, "group-id3");
 
         return props;
     }

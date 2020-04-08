@@ -20,7 +20,6 @@ public class KafkaController {
     public void sendTransactionTypeToKafkaTopic(@PathVariable("transactionType") String transactionType){
         Transaction transaction = new Transaction("10₺",transactionType);
         this.kafkaProducerService.send(transaction);
-
     }
 
 }
