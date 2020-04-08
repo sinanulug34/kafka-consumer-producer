@@ -14,6 +14,7 @@ public class KafkaController {
     @Autowired
     public KafkaController(KafkaProducerService kafkaProducerService) {
         this.kafkaProducerService = kafkaProducerService;
+
     }
     @GetMapping(value = "/publish/{transactionType}")
     public void sendTransactionTypeToKafkaTopic(@PathVariable("transactionType") String transactionType){
