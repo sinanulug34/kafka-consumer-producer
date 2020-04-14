@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kafka.procedur.consumer.model.Transaction;
 import com.kafka.procedur.consumer.service.KafkaProducerService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.assertj.core.api.Assertions;
 import org.junit.ClassRule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,14 +21,12 @@ import org.springframework.kafka.test.rule.EmbeddedKafkaRule;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertThat;
-import static org.springframework.kafka.test.assertj.KafkaConditions.key;
 import static org.springframework.kafka.test.hamcrest.KafkaMatchers.hasValue;
 
 
@@ -73,15 +70,14 @@ public class TransactionIT {
     @Test
     public void sentMessage() throws InterruptedException, JsonProcessingException {
         Transaction message = Transaction.builder().amount("10").transactionType("Auth").build() ;
-        Map<String, Object> configs = new HashMap<>(KafkaTestUtils.producerProps(embeddedKafka.getEmbeddedKafka()));
-
         kafkaProducerService.send(message);
+
 
         ConsumerRecord<String, String> received = records.poll(10, TimeUnit.SECONDS);
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(message);
         assertThat(received, hasValue(json));
-        Assertions.assertThat(received).has(key(null));
+
     }
 
 }

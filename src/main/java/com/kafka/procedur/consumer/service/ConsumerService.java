@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConsumerService {
 
-    @KafkaListener(topics = "TransactionEvent",containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "TransactionEvent",containerFactory = "kafkaListenerContainerFactory",groupId = "group-id")
     public void consume(Transaction transaction){
         System.out.println(transaction.toString());
     }
+
+
 
 }
