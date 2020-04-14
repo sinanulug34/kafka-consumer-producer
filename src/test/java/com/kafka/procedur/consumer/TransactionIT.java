@@ -32,7 +32,6 @@ import static org.springframework.kafka.test.hamcrest.KafkaMatchers.hasValue;
 
 @SpringBootTest
 @EmbeddedKafka
-@EnableAutoConfiguration(exclude = org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration.class)
 public class TransactionIT {
     private static final String TOPIC = "TransactionEvent";
     @Autowired
