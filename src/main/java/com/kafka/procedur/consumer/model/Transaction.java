@@ -1,4 +1,5 @@
 package com.kafka.procedur.consumer.model;
+
 import lombok.*;
 
 @Data
@@ -6,9 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Builder
-public class Transaction {
+public class Transaction{
 
     private String amount;
     private String transactionType;
-
 }
