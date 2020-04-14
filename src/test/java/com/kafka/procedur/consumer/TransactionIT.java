@@ -72,7 +72,7 @@ public class TransactionIT {
         Transaction message = Transaction.builder().amount("10").transactionType("Auth").build() ;
         kafkaProducerService.send(message);
 
-
+            // todo -> received is null.
         ConsumerRecord<String, String> received = records.poll(10, TimeUnit.SECONDS);
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(message);
